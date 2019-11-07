@@ -15,7 +15,7 @@ Explico a continuación los diferentes ficheros que he creado y qué hace cada u
 Dos funciones que nos devuelven la url con los parámetros y headers adecuados para el fetch. 
 
 2) **sendData.js**
-Función utilizada para actualizar en el servidor una nueva tarea creada. Obtiene el objeto de actualización del formulario pintado en la app. La propiedad 'kind' debe ser parasada a numérico porque así lo pide la API.
+Función utilizada para actualizar en el servidor una nueva tarea creada. Obtiene el objeto de actualización del formulario pintado en la app. La propiedad 'kind' debe ser pasada a numérico porque así lo pide la API.
 
 3) **transformData.js**
 Transforma los datos recibidos desde el servidor en los datos que se pintarán en el navegador. Aquí he tenido que inventar algunos datos: 
