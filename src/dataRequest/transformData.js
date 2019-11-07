@@ -1,4 +1,4 @@
-const transformData = data => {
+const transformData = (data) => {
     const newData = {};
 
     newData.owner = data.owner;
@@ -14,10 +14,11 @@ const transformData = data => {
 const getDate = (data) => {
     const date = data["due"].split("T");
     const time = date[1].split(":")[0] + ":" + date[1].split(":")[1];
+
     return date[0] + " " + time;
 }
 
-const getType = kind => {
+const getType = (kind) => {
     let type;
     switch (kind) {
         case 0:

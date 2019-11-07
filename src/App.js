@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import CustomizedTables from './templates/tableData';
+import CustomizedTables from './templates/TableData';
 import UncontrolledTextField from './templates/AddDataform';
 import transformData from './dataRequest/transformData';
 import getUrl from './dataRequest/fetchParams';
@@ -12,17 +12,9 @@ const sendDataForm = sendData;
 class App extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { rows:null };
-  }
-  
-  createData = (theData) => {
-    const rows = [];
-    theData.forEach(item => {
-        rows.push(transformData(item))
-    });
-    this.setState({
-        rows:rows
-    })
+    this.state = { 
+      rows : null 
+    };
   }
 
   getData = (param) => {
@@ -38,6 +30,16 @@ class App extends React.Component {
         this.createData(data);
       }
     );
+  }
+
+  createData = (theData) => {
+    const rows = [];
+    theData.forEach(item => {
+        rows.push(transformData(item))
+    });
+    this.setState({
+        rows:rows
+    })
   }
 
   render () {
