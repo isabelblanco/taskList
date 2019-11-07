@@ -20,3 +20,18 @@
 .App-link {
   color: #09d3ac;
 }
+
+button {
+  background: #28a745;
+  border: none;
+  color: white;
+  padding: 10px;
+  border-radius: 5px;
+  font-size: 17px;
+  margin: 15px;
+}
+
+button:hover {
+  background: #169032;
+  cursor: pointer;
+}

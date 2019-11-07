@@ -1,26 +1,60 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import CustomizedTables from './templates/tableData';
+import UncontrolledTextField from './templates/AddDataform';
+import transformData from './dataRequest/transformData';
+import getUrl from './dataRequest/fetchParams';
+import sendData from './dataRequest/sendData';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+const params = getUrl;
+const sendDataForm = sendData;
+
+class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { rows:null };
+  }
+  
+  createData = (theData) => {
+    const rows = [];
+    theData.forEach(item => {
+        rows.push(transformData(item))
+    });
+    this.setState({
+        rows:rows
+    })
+  }
+
+  getData = (param) => {
+    fetch(params.getUrl(param), {method:'GET',
+        headers: params.getHeaders(),
+    })
+    .then(response => {
+        return response.json()}
+    )
+    .then(json => 
+      {
+        const data = json.results;
+        this.createData(data);
+      }
+    );
+  }
+
+  render () {
+    const data = this.state;
+    return (
+      <div className="App">
+        <h1>Task list</h1>
+        { data.rows &&
+          <CustomizedTables rows={data.rows}></CustomizedTables> 
+        }
+        <button variant="contained" className="allTasks" onClick={this.getData}>All tasks</button>
+        <button variant="contained" className="doneTasks" onClick={this.getData.bind(this, "done")}> Done tasks</button>
+        <UncontrolledTextField></UncontrolledTextField>
+        <button variant="contained" className="addTask" onClick={sendDataForm}>Add Task</button>
+      </div>
+    );
+  }
 }
 
 export default App;
