@@ -2,7 +2,7 @@
 
 ## **ARRANQUE**
 Esta es una aplicación construída con **React**. Para inciarla: 
-1) **Clona** el repositorio en tu tu terminal
+1) **Clona** el repositorio en tu terminal
 2) **Instala** las depedencias necesarias ejecutando en el terminal 'npm install'
 3) **Abre** el proyecto en local ejecutando en el terminal 'yarn start'
 
